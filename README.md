@@ -10,4 +10,4 @@
 
 ## Github pages link:
 
-- [Link to site](https://claudiocassimiro.github.io/web_project_homeland/)
+- [Link to site](https://claudiocassimiro.github.io/web_project_around/)
