@@ -20,10 +20,10 @@
 }
 
 .elements__wrapper-text-and-like-button {
+  padding: 0 5px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 100%;
   max-width: 282px;
   background-color: #ffffff;
   border-radius: 0 0 10px 10px;
@@ -33,6 +33,9 @@
   font-size: 24px;
   line-height: 29.05px;
   font-weight: 900;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .elements__like-button {
