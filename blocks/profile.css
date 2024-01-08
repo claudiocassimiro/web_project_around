@@ -2,7 +2,7 @@
   display: flex;
   gap: 30px;
   align-items: center;
-  margin: 0 auto;
+  margin: 0 auto 50px;
   max-width: 880px;
   color: #ffffff;
 }
@@ -45,6 +45,11 @@
   border: 1px solid #ffffff;
 }
 
+.profile__edit-icon {
+  width: 10px;
+  height: 10px;
+}
+
 .profile__role {
   margin: 0;
   font-size: 18px;
@@ -76,10 +81,16 @@
 @media screen and (max-width: 720px) {
   .profile {
     padding: 42px 19px 36px;
+    margin: 0 auto;
   }
 
   .profile__wrapper-name-and-edit-button {
     gap: 10px;
+  }
+
+  .profile__add-card-icon {
+    width: 16px;
+    height: 16px;
   }
 
   .profile__name {
