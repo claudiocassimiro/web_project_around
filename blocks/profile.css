@@ -43,6 +43,7 @@
   height: 24px;
   background-color: transparent;
   border: 1px solid #ffffff;
+  cursor: pointer;
 }
 
 .profile__edit-icon {
