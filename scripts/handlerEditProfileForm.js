@@ -1,10 +1,10 @@
-const editProfileForm = document.querySelector(".dialog__form");
+const editProfileForm = document.querySelector(".popup__form");
 const profileName = document.querySelector(".profile__name");
 const profileRole = document.querySelector(".profile__role");
 
 const inputName = document.querySelector("#input-name");
 const inputRole = document.querySelector("#input-role");
-const saveButton = document.querySelector(".dialog__save-button");
+const saveButton = document.querySelector(".popup__save-button");
 
 editProfileForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -20,5 +20,5 @@ saveButton.addEventListener("click", () => {
   inputName.value = newName;
   inputRole.value = newRole;
 
-  dialog.classList.remove("dialog_visible");
+  popup.classList.remove("popup_opened");
 });
