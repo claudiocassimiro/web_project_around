@@ -36,12 +36,11 @@
             <p class="profile__role">Explorador</p>
           </div>
           <button class="profile__add-card-button">
-            <object
+            <img
               class="profile__add-card-icon"
-              data="./images/add-card-icon.svg"
-              width="22"
-              height="22"
-            ></object>
+              src="./images/add-card-icon.svg"
+              alt="Add card button"
+            />
           </button>
         </section>
         <section class="elements">
@@ -153,10 +152,39 @@
           </form>
         </div>
       </div>
+      <div class="popup-add-card">
+        <div class="popup-add-card__container">
+          <img
+            class="popup-add-card__close-button"
+            src="./images/close-icon.png"
+            alt="Botão de fechar o popup"
+          />
+          <h2 class="popup-add-card__title">Novo local</h2>
+          <form class="popup-add-card__form">
+            <input
+              id="input-location-name"
+              class="popup-add-card__input"
+              type="text"
+              placeholder="Titulo"
+            />
+            <input
+              id="input-image"
+              class="popup-add-card__input"
+              type="text"
+              placeholder="Link da imagem"
+            />
+            <button class="popup-add-card__create-button" type="submit">
+              Criar
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
-    <script src="./scripts/initialCards.js"></script>
     <script src="./scripts/likeButton.js"></script>
+    <script src="./scripts/initialCards.js"></script>
+    <script src="./scripts/popupAddCardOpenAndCloseButton.js"></script>
     <script src="./scripts/popupOpenAndCloseButton.js"></script>
     <script src="./scripts/handlerEditProfileForm.js"></script>
+    <script src="./scripts/handlerCreateNewCardForm.js"></script>
   </body>
 </html>

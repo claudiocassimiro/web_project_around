@@ -33,3 +33,5 @@ initialCards.forEach((card, index) => {
   cardImgs[index].setAttribute("alt", `Imagem do ${card.name}`);
   cardTitles[index].innerText = card.name;
 });
+
+handleLikeButtons();
