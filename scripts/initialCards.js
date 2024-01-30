@@ -35,3 +35,4 @@ initialCards.forEach((card, index) => {
 });
 
 handleLikeButtons();
+handleDeleteButtons();
