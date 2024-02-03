@@ -45,6 +45,13 @@
         </section>
         <section class="elements">
           <div class="elements__card">
+            <button type="button" class="elements__delete-button">
+              <img
+                class="elements__delete-icon"
+                src="./images/trash.png"
+                alt="delete button icon"
+              />
+            </button>
             <img class="elements__card-image" src="#" alt="" />
             <div class="elements__wrapper-text-and-like-button">
               <p class="elements__card-name">Vale de Yosemite</p>
@@ -58,6 +65,13 @@
             </div>
           </div>
           <div class="elements__card">
+            <button type="button" class="elements__delete-button">
+              <img
+                class="elements__delete-icon"
+                src="./images/trash.png"
+                alt="delete button icon"
+              />
+            </button>
             <img class="elements__card-image" src="#" alt="" />
             <div class="elements__wrapper-text-and-like-button">
               <p class="elements__card-name">Vale de Yosemite</p>
@@ -71,6 +85,13 @@
             </div>
           </div>
           <div class="elements__card">
+            <button type="button" class="elements__delete-button">
+              <img
+                class="elements__delete-icon"
+                src="./images/trash.png"
+                alt="delete button icon"
+              />
+            </button>
             <img class="elements__card-image" src="#" alt="" />
             <div class="elements__wrapper-text-and-like-button">
               <p class="elements__card-name">Vale de Yosemite</p>
@@ -84,6 +105,13 @@
             </div>
           </div>
           <div class="elements__card">
+            <button type="button" class="elements__delete-button">
+              <img
+                class="elements__delete-icon"
+                src="./images/trash.png"
+                alt="delete button icon"
+              />
+            </button>
             <img class="elements__card-image" src="#" alt="" />
             <div class="elements__wrapper-text-and-like-button">
               <p class="elements__card-name">Vale de Yosemite</p>
@@ -97,6 +125,13 @@
             </div>
           </div>
           <div class="elements__card">
+            <button type="button" class="elements__delete-button">
+              <img
+                class="elements__delete-icon"
+                src="./images/trash.png"
+                alt="delete button icon"
+              />
+            </button>
             <img class="elements__card-image" src="#" alt="" />
             <div class="elements__wrapper-text-and-like-button">
               <p class="elements__card-name">Vale de Yosemite</p>
@@ -110,6 +145,13 @@
             </div>
           </div>
           <div class="elements__card">
+            <button type="button" class="elements__delete-button">
+              <img
+                class="elements__delete-icon"
+                src="./images/trash.png"
+                alt="delete button icon"
+              />
+            </button>
             <img class="elements__card-image" src="#" alt="" />
             <div class="elements__wrapper-text-and-like-button">
               <p class="elements__card-name">Vale de Yosemite</p>
@@ -152,38 +194,56 @@
           </form>
         </div>
       </div>
-      <div class="popup-add-card">
-        <div class="popup-add-card__container">
+      <div class="popup popup-add-card">
+        <div class="popup__container">
           <img
-            class="popup-add-card__close-button"
+            class="popup__close-button popup-add-card__close-button"
             src="./images/close-icon.png"
             alt="Botão de fechar o popup"
           />
-          <h2 class="popup-add-card__title">Novo local</h2>
-          <form class="popup-add-card__form">
+          <h2 class="popup__title">Novo local</h2>
+          <form class="popup__form">
             <input
               id="input-location-name"
-              class="popup-add-card__input"
+              class="popup__input"
               type="text"
               placeholder="Titulo"
             />
             <input
               id="input-image"
-              class="popup-add-card__input"
+              class="popup__input"
               type="text"
               placeholder="Link da imagem"
             />
-            <button class="popup-add-card__create-button" type="submit">
+            <button
+              class="popup__save-button popup-add-card__create-button"
+              type="submit"
+            >
               Criar
             </button>
           </form>
         </div>
       </div>
+      <div class="popup popup-view-image">
+        <div class="popup__container popup-view-image__image-container">
+          <img
+            class="popup__close-button popup-view-image__close-button"
+            src="./images/close-icon.png"
+            alt="Botão de fechar o popup"
+          />
+          <div class="popup-view-image__image-container">
+            <img class="popup-view-image__render-image" src="#" alt="#" />
+            <span class="popup-view-image__image-title"></span>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="./scripts/likeButton.js"></script>
+    <script src="./scripts/deleteButton.js"></script>
     <script src="./scripts/initialCards.js"></script>
     <script src="./scripts/popupAddCardOpenAndCloseButton.js"></script>
     <script src="./scripts/popupOpenAndCloseButton.js"></script>
+    <script src="./scripts/popupViewImage.js"></script>
     <script src="./scripts/handlerEditProfileForm.js"></script>
     <script src="./scripts/handlerCreateNewCardForm.js"></script>
   </body>

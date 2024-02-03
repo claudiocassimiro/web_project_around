@@ -12,17 +12,20 @@ addCardForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const newCard = cards[0].cloneNode(true);
 
-  newCard.childNodes[0].nextSibling.src = inputImage.value;
-  newCard.childNodes[0].nextSibling.alt = `Imagem do ${inputTitle.value}`;
-  newCard.childNodes[3].children[0].innerText = inputTitle.value;
+  newCard.childNodes[2].nextSibling.src = inputImage.value;
+  newCard.childNodes[2].nextSibling.alt = `Imagem do ${inputTitle.value}`;
+  newCard.childNodes[5].children[0].innerText = inputTitle.value;
 
-  const newCards = [newCard, ...cards];
+  document.querySelector(".elements").prepend(newCard);
 
-  document.querySelector(".elements").append(...newCards);
+  const likeButton = document.querySelector(".elements__like-icon");
+  const deleteButton = document.querySelector(".elements__delete-icon");
 
-  const button = document.querySelector(".elements__like-icon");
+  inputImage.value = "";
+  inputTitle.value = "";
 
-  handleNewLikeButton(button);
+  handleNewLikeButton(likeButton);
+  handleNewDeleteButton(deleteButton);
 });
 
 createButton.addEventListener("click", () => {
