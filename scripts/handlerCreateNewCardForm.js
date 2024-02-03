@@ -16,9 +16,7 @@ addCardForm.addEventListener("submit", (e) => {
   newCard.childNodes[2].nextSibling.alt = `Imagem do ${inputTitle.value}`;
   newCard.childNodes[5].children[0].innerText = inputTitle.value;
 
-  const newCards = [newCard, ...cards];
-
-  document.querySelector(".elements").append(...newCards);
+  document.querySelector(".elements").prepend(newCard);
 
   const likeButton = document.querySelector(".elements__like-icon");
   const deleteButton = document.querySelector(".elements__delete-icon");
