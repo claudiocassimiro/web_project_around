@@ -25,6 +25,8 @@
   gap: 18px;
   justify-content: center;
   align-items: center;
+  min-width: 289px;
+  max-width: 390px;
 }
 
 .profile__name {
@@ -32,6 +34,9 @@
   font-size: 42px;
   line-height: 48px;
   font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__edit-button {
@@ -55,6 +60,11 @@
   margin: 0;
   font-size: 18px;
   line-height: 21.78px;
+  min-width: 87.69px;
+  max-width: 67.7px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__add-card-button {
