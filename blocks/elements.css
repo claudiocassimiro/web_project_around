@@ -6,6 +6,8 @@
   height: 100%;
   margin: 0 auto;
   max-width: 880px;
+  min-height: 739px;
+  max-height: 2251px;
 }
 
 .elements__card {
