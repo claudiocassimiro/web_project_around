@@ -23,7 +23,7 @@
 .profile__wrapper-name-and-edit-button {
   display: flex;
   gap: 18px;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   min-width: 289px;
   max-width: 390px;
