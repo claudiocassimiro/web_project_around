@@ -157,9 +157,47 @@ const profileRole = document.querySelector(".profile__role");
 const inputName = document.querySelector("#input-name");
 const inputRole = document.querySelector("#input-role");
 const saveButton = document.querySelector(".popup__save-button");
+const inputNameError = document.querySelector("#input-name-error");
+const inputRoleError = document.querySelector("#input-role-error");
 
 editProfileForm.addEventListener("submit", (e) => {
   e.preventDefault();
+});
+
+inputName.addEventListener("input", (e) => {
+  saveButton.disabled = true;
+  if (inputName.value.length == 0) {
+    inputNameError.textContent = "Preencha esse campo.";
+    inputName.classList.add("popup__input-error");
+  } else if (inputName.value.length < 2) {
+    inputNameError.textContent = "O campo deve ter ao menos 2 caracteres.";
+    inputName.classList.add("popup__input-error");
+  } else if (inputName.value.length > 40) {
+    inputNameError.textContent = "O campo deve ter entre 2 e 40 caracteres.";
+    inputName.classList.add("popup__input-error");
+  } else {
+    inputNameError.textContent = "";
+    inputName.classList.remove("popup__input-error");
+    saveButton.disabled = false;
+  }
+});
+
+inputRole.addEventListener("input", (e) => {
+  saveButton.disabled = true;
+  if (inputRole.value.length == 0) {
+    inputRoleError.textContent = "Preencha esse campo.";
+    inputRole.classList.add("popup__input-error");
+  } else if (inputRole.value.length < 2) {
+    inputRoleError.textContent = "O campo deve ter ao menos 2 caracteres.";
+    inputRole.classList.add("popup__input-error");
+  } else if (inputRole.value.length > 200) {
+    inputRoleError.textContent = "O campo deve ter entre 2 e 200 caracteres.";
+    inputRole.classList.add("popup__input-error");
+  } else {
+    inputRoleError.textContent = "";
+    inputRole.classList.remove("popup__input-error");
+    saveButton.disabled = false;
+  }
 });
 
 saveButton.addEventListener("click", () => {
