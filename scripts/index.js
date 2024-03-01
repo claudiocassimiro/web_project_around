@@ -95,6 +95,7 @@ const closePopupAddCardButton = document.querySelector(
 
 addCardButton.addEventListener("click", () => {
   popupAddCards.classList.add("popup-add-card_opened");
+  validationForm("#input-location-name", "#input-image", "#input-location-name-error", "#input-image-error", "#create-button");
 });
 
 closePopupAddCardButton.addEventListener("click", () => {
@@ -108,11 +109,31 @@ const closePopupButton = document.querySelector(".popup__close-button");
 
 editButton.addEventListener("click", () => {
   popup.classList.add("popup_opened");
+  validationForm("#input-name", "#input-role", "#input-name-error", "#input-role-error", "#save-button");
 });
 
 closePopupButton.addEventListener("click", () => {
   popup.classList.remove("popup_opened");
 });
+
+popup.addEventListener("click", (event) => {
+  if (event.target.classList.contains("popup")) {
+    popup.classList.remove("popup_opened");
+  }
+});
+
+popupAddCards.addEventListener("click", (event) => {
+  if (event.target.classList.contains("popup-add-card")) {
+    popupAddCards.classList.remove("popup-add-card_opened");
+  }
+});
+
+document.onkeydown = function(event) {
+  if (event.key === "Escape") {
+    popup.classList.remove("popup_opened");
+    popupAddCards.classList.remove("popup-add-card_opened");
+  }
+};
 
 // popupViewImage
 const popupViewImage = document.querySelector(".popup-view-image");
@@ -149,72 +170,107 @@ const handleViewImageOnPopup = () => {
 
 handleViewImageOnPopup();
 
-// handlerEditProfileForm
+popupViewImage.addEventListener("click", (event) => {
+  if (event.target.classList.contains("popup-view-image")) {
+    popupViewImage.classList.remove("popup-view-image_opened");
+  }
+});
+
 const editProfileForm = document.querySelector(".popup__form");
+const addCardForm =  document.querySelector(".popup__add-card-form");
 const profileName = document.querySelector(".profile__name");
 const profileRole = document.querySelector(".profile__role");
-
-const inputName = document.querySelector("#input-name");
-const inputRole = document.querySelector("#input-role");
-const saveButton = document.querySelector(".popup__save-button");
-const inputNameError = document.querySelector("#input-name-error");
-const inputRoleError = document.querySelector("#input-role-error");
 
 editProfileForm.addEventListener("submit", (e) => {
   e.preventDefault();
 });
 
-inputName.addEventListener("input", (e) => {
-  saveButton.disabled = true;
-  if (inputName.value.length == 0) {
-    inputNameError.textContent = "Preencha esse campo.";
-    inputName.classList.add("popup__input-error");
-  } else if (inputName.value.length < 2) {
-    inputNameError.textContent = "O campo deve ter ao menos 2 caracteres.";
-    inputName.classList.add("popup__input-error");
-  } else if (inputName.value.length > 40) {
-    inputNameError.textContent = "O campo deve ter entre 2 e 40 caracteres.";
-    inputName.classList.add("popup__input-error");
-  } else {
-    inputNameError.textContent = "";
-    inputName.classList.remove("popup__input-error");
-    saveButton.disabled = false;
+addCardForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
+
+// validateForm
+const validationForm = (input1Id, input2Id, inputError1Id, inputError2Id, actionButtonId) => {
+  const input1 = document.querySelector(input1Id);
+  const input2 = document.querySelector(input2Id);
+  const inputError1 = document.querySelector(inputError1Id);
+  const inputError2 = document.querySelector(inputError2Id);
+  const actionButton = document.querySelector(actionButtonId);
+
+  if (input1.value === "" || input2.value === "") {
+    actionButton.disabled = true;
   }
-});
 
-inputRole.addEventListener("input", (e) => {
-  saveButton.disabled = true;
-  if (inputRole.value.length == 0) {
-    inputRoleError.textContent = "Preencha esse campo.";
-    inputRole.classList.add("popup__input-error");
-  } else if (inputRole.value.length < 2) {
-    inputRoleError.textContent = "O campo deve ter ao menos 2 caracteres.";
-    inputRole.classList.add("popup__input-error");
-  } else if (inputRole.value.length > 200) {
-    inputRoleError.textContent = "O campo deve ter entre 2 e 200 caracteres.";
-    inputRole.classList.add("popup__input-error");
-  } else {
-    inputRoleError.textContent = "";
-    inputRole.classList.remove("popup__input-error");
-    saveButton.disabled = false;
+  input1.addEventListener("input", (e) => {
+    actionButton.disabled = true;
+    if (input1.value.length == 0) {
+      inputError1.textContent = "Preencha esse campo.";
+      input1.classList.add("popup__input-error");
+    } else if (input1.value.length < 2) {
+      inputError1.textContent = "O campo deve ter ao menos 2 caracteres.";
+      input1.classList.add("popup__input-error");
+    } else if (input1.value.length > 40) {
+      inputError1.textContent = "O campo deve ter entre 2 e 40 caracteres.";
+      input1.classList.add("popup__input-error");
+    } else {
+      inputError1.textContent = "";
+      input1.classList.remove("popup__input-error");
+      if (input1.value.length >= 2 && input2.value.length >= 2) {
+        actionButton.disabled = false;
+      }
+    }
+  });
+  
+  input2.addEventListener("input", (e) => {
+    actionButton.disabled = true;
+    if (input2.value.length == 0) {
+      inputError2.textContent = "Preencha esse campo.";
+      input2.classList.add("popup__input-error");
+    } else if (input2.value.length < 2) {
+      inputError2.textContent = "O campo deve ter ao menos 2 caracteres.";
+      input2.classList.add("popup__input-error");
+    } else if (input2Id == "#input-image" && !input2.value.includes("http")) {
+      inputError2.textContent = "Por favor, insira um endereço web."
+      input2.classList.add("popup__input-error");
+    } else {
+      inputError2.textContent = "";
+      input2.classList.remove("popup__input-error");
+      if (input1.value.length >= 2 && input2.value.length >= 2) {
+        actionButton.disabled = false;
+      }
+    }
+  });
+
+  if (actionButton.id === "save-button") {
+    return handleSaveProfileInformation(input1, input2);
   }
-});
 
-saveButton.addEventListener("click", () => {
-  const newName = inputName.value;
-  const newRole = inputRole.value;
+  // preciso concertar o fechamento do popup de criação de card
+  if (actionButton.id === "create-button") {
+    createButton.addEventListener("click", () => {
+      popupAddCards.classList.remove("popup-add-card_opened");
+    })
+  }
+};
 
-  profileName.innerText = newName;
-  profileRole.innerText = newRole;
+const handleSaveProfileInformation = (input1, input2) => {
+  const saveButton = document.querySelector("#save-button")
 
-  inputName.value = newName;
-  inputRole.value = newRole;
+  saveButton.addEventListener("click", () => {
+    const newName = input1.value;
+    const newRole = input2.value;
 
-  popup.classList.remove("popup_opened");
-});
+    profileName.innerText = newName;
+    profileRole.innerText = newRole;
+  
+    input1.value = newName;
+    input2.value = newRole;
+  
+    popup.classList.remove("popup_opened");
+  });
+}
 
 // handlerCreateNewCardForm
-const addCardForm = document.querySelector(".popup-add-card");
 const title = document.querySelector(".profile__name");
 const image = document.querySelector(".profile__role");
 
@@ -245,6 +301,6 @@ addCardForm.addEventListener("submit", (e) => {
   handleViewImageOnPopup();
 });
 
-createButton.addEventListener("click", () => {
+createButton.addEventListener("submit", () => {
   addCardForm.classList.remove("popup-add-card_opened");
 });
