@@ -208,6 +208,9 @@ const validationForm = (
   const inputError2 = document.querySelector(inputError2Id);
   const actionButton = document.querySelector(actionButtonId);
 
+  const maxInputLength = 40;
+  const minInputLength = 2;
+
   if (input1.value === "" || input2.value === "") {
     actionButton.disabled = true;
   }
@@ -217,16 +220,19 @@ const validationForm = (
     if (input1.value.length == 0) {
       inputError1.textContent = "Preencha esse campo.";
       input1.classList.add("popup__input-error");
-    } else if (input1.value.length < 2) {
+    } else if (input1.value.length < minInputLength) {
       inputError1.textContent = "O campo deve ter ao menos 2 caracteres.";
       input1.classList.add("popup__input-error");
-    } else if (input1.value.length > 40) {
+    } else if (input1.value.length > maxInputLength) {
       inputError1.textContent = "O campo deve ter entre 2 e 40 caracteres.";
       input1.classList.add("popup__input-error");
     } else {
       inputError1.textContent = "";
       input1.classList.remove("popup__input-error");
-      if (input1.value.length >= 2 && input2.value.length >= 2) {
+      if (
+        input1.value.length >= minInputLength &&
+        input2.value.length >= minInputLength
+      ) {
         actionButton.disabled = false;
       }
     }
@@ -237,7 +243,7 @@ const validationForm = (
     if (input2.value.length == 0) {
       inputError2.textContent = "Preencha esse campo.";
       input2.classList.add("popup__input-error");
-    } else if (input2.value.length < 2) {
+    } else if (input2.value.length < minInputLength) {
       inputError2.textContent = "O campo deve ter ao menos 2 caracteres.";
       input2.classList.add("popup__input-error");
     } else if (input2Id == "#input-image" && !input2.value.includes("http")) {
@@ -246,7 +252,10 @@ const validationForm = (
     } else {
       inputError2.textContent = "";
       input2.classList.remove("popup__input-error");
-      if (input1.value.length >= 2 && input2.value.length >= 2) {
+      if (
+        input1.value.length >= minInputLength &&
+        input2.value.length >= minInputLength
+      ) {
         actionButton.disabled = false;
       }
     }
