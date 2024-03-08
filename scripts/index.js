@@ -91,10 +91,11 @@ addCardButton.addEventListener("click", () => {
     "#input-image-error",
     "#create-button"
   );
-});
 
-closePopupAddCardButton.addEventListener("click", () => {
-  popupAddCards.classList.remove("popup-add-card_opened");
+  closePopupAddCardButton.addEventListener("click", () => {
+    popupAddCards.classList.remove("popup-add-card_opened");
+    closePopupAddCardButton.removeEventListener();
+  });
 });
 
 // popupOpenAndCloseButton
@@ -111,10 +112,11 @@ editButton.addEventListener("click", () => {
     "#input-role-error",
     "#save-button"
   );
-});
 
-closePopupButton.addEventListener("click", () => {
-  popup.classList.remove("popup_opened");
+  closePopupButton.addEventListener("click", () => {
+    popup.classList.remove("popup_opened");
+    closePopupButton.removeEventListener();
+  });
 });
 
 popup.addEventListener("click", (event) => {
@@ -166,6 +168,7 @@ const handleViewImageOnPopup = () => {
 
     closePopupViewImageButton.addEventListener("click", () => {
       popupViewImage.classList.remove("popup-view-image_opened");
+      closePopupViewImageButton.removeEventListener();
     });
   });
 };
